@@ -1,0 +1,333 @@
+.calendarWrapper {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 15px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 600px;
+  margin: 4rem auto; /* extra top margin for hanger */
+  position: relative;
+  /* Removed overflow: hidden so the hanger and top loops can stick out! */
+}
+
+@media (max-width: 600px) {
+  .calendarWrapper { margin: 3rem auto 1rem; }
+}
+
+/* Realistic Twin-loop Wire Binding */
+.bindingContainer {
+  position: absolute;
+  top: -10px; /* Offset so loops stick out above the paper edge */
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 10;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wallPin {
+  position: absolute;
+  top: -26px; /* up from the new top */
+  width: 10px;
+  height: 10px;
+  background: #555;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.6), inset -1px -1px 3px rgba(0,0,0,0.8);
+  z-index: 3;
+}
+
+.hangerWire {
+  position: absolute;
+  top: -22px;
+  width: 60px;
+  height: 38px;
+  border: 3px solid #333;
+  border-bottom: none;
+  border-radius: 40px 40px 0 0;
+  box-shadow: inset 1px 1px 1px rgba(255,255,255,0.2), 2px 5px 6px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.horizontalWire {
+  position: absolute;
+  top: 14px; /* Behind the loops, aligning with hanger wire finish */
+  width: 90%;
+  height: 3px;
+  background: linear-gradient(to bottom, #888, #222, #444);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.coilsWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 88%;
+  margin-top: 10px; 
+  z-index: 3;
+}
+
+.coilGroup {
+  position: relative;
+  width: 12px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.coilSpacer {
+  width: 12px;
+}
+
+.coilHole {
+  position: absolute;
+  bottom: 0; /* Align with bottom of coilGroup */
+  width: 12px;
+  height: 14px;
+  background: var(--color-bg); /* Paper punch showing wall */
+  border-radius: 2px;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,1);
+  z-index: 1;
+}
+
+.twinLoop {
+  width: 3px;
+  height: 32px; /* longer loops */
+  background: linear-gradient(to right, #ccc, #fff, #555, #222);
+  border-radius: 4px;
+  margin: 0 1px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 2px 3px 4px rgba(0,0,0,0.6);
+  transform: translateY(-8px); /* stick up over the paper edge */
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.heroImageContainer {
+  width: 100%;
+  height: 380px;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+  display: block;
+}
+
+/* Blue Divider / Banner */
+.blueDivider {
+  position: relative;
+  height: 160px;
+  background-color: var(--color-accent);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0px 40px;
+  margin-top: -76px; /* 20% of 380px is 76px. Pulls it under the image V cut */
+  /* Remove complex clip-path so MonthText remains visible! */
+}
+
+/* Optional wrapper if we want to separate notes area from right area */
+.spacer {
+  flex-grow: 1; /* Pushes month info to the right */
+}
+
+.monthInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  color: white;
+  gap: 20px;
+  /* Push text down slightly so it sits in the visible part of the blue section */
+  margin-top: 40px; 
+}
+
+.monthTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.yearText {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.monthText {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.navGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.navButton {
+  color: white;
+  display: flex;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  padding: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+/* Bottom Section */
+.bottomSection {
+  background: white;
+  padding: 40px 40px; 
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 30px;
+  z-index: 0;
+  position: relative;
+}
+
+@media (max-width: 500px) {
+  .bottomSection {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* Notes Sidebar */
+.notesColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.notesContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 10px;
+}
+
+.notesHeaderTitle {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.notesTextarea {
+  flex-grow: 1;
+  width: 100%;
+  min-height: 220px;
+  border: none;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 35px,
+    #cfcfcf 35px,
+    #cfcfcf 36px
+  );
+  line-height: 36px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  resize: none;
+}
+
+.notesTextarea:focus {
+  outline: none;
+}
+
+/* Month Grid */
+.mainGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.daysHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.weekendHeader {
+  color: var(--color-accent);
+}
+
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px 4px;
+}
+
+.dayCell {
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.dayCell:hover {
+  background: #f0f0f0;
+}
+
+.dayCell.empty {
+  visibility: hidden;
+}
+
+.dayCell.today {
+  color: var(--color-accent);
+}
+
+.dayCell.today::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.dayCell.selectedStart,
+.dayCell.selectedEnd {
+  background: var(--color-accent);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.dayCell.inRange,
+.dayCell.inRangeHover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-radius: 8px;
+}
