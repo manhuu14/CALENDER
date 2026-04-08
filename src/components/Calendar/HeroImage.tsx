@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './calendar.module.css';
 
 // Using stable IDs from picsum.photos that feature landscapes and nature
