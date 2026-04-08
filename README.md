@@ -49,17 +49,6 @@ This project is inspired by a physical wall calendar design and focuses on deliv
 
 ---
 
-## 📂 Project Structure
-
-```
-/components     → UI components (Calendar, Notes, etc.)
-/pages          → Next.js pages
-/public         → Images and assets
-/styles         → Styling files
-```
-
----
-
 ## ▶️ Getting Started
 
 ### 1. Clone the repository
@@ -90,29 +79,11 @@ http://localhost:3000
 ---
 
 ## 🎥 Demo
-
-* 📌 Video Walkthrough: *(Add your Loom/YouTube link here)*
-* 🌐 Live Demo: *(Add Vercel/Netlify link here)*
+* 🌐 Live Demo:https://calendar-4re.netlify.app 
 
 ---
 
-## 🎯 Key Highlights
 
-* Focus on **UI/UX design and responsiveness**
-* Clean and modular component structure
-* Real-world usability with notes and date selection
-* Smooth interaction handling
-
----
-
-## 📌 Future Improvements
-
-* 🌙 Dark mode support
-* 🎨 Dynamic theme based on image
-* 📅 Holiday & event markers
-* 🔄 Animations (calendar flip / transitions)
-
----
 
 ## 👨‍💻 Author
 
